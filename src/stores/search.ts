@@ -24,7 +24,7 @@ export const useSearchStore = defineStore('search', () => {
     try {
       if (testingMode.value) {
         // Mock API response for testing
-        results.value = Array(10)
+        results.value = Array(20)
           .fill(null)
           .map((_, i) => ({
             id: `${i}`,
@@ -53,7 +53,7 @@ export const useSearchStore = defineStore('search', () => {
         // Mock API response for testing
         results.value = [
           ...results.value,
-          ...Array(10)
+          ...Array(20)
             .fill(null)
             .map((_, i) => ({
               id: `${page.value * 10 + i}`,

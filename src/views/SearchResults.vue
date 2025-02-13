@@ -1,9 +1,11 @@
 <template>
   <div>
-    <div class="flex items-center justify-between mb-4 bg-background-200 rounded-lg p-4">
+    <div class="flex items-center justify-between mb-4 bg-background-100 rounded-lg p-4">
       <p class="text-lg text-text-600">
-        Showing results for <span class="font-bold">{{ searchStore.query }}</span
-        >, Total Results: <span class="font-bold">{{ searchStore.results.length }}</span>
+        Showing results for <span class="font-bold">{{ searchStore.query }}</span>
+        <span class="hidden sm:inline">
+          - Total Results: <span class="font-bold">{{ searchStore.results.length }}</span></span
+        >
       </p>
       <div class="flex items-center gap-2">
         <button @click="showFilters = !showFilters" class="flex items-center gap-1">
@@ -14,14 +16,14 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       <!-- Filters Sidebar -->
       <aside class="col-span-1" v-show="showFilters">
         <SearchFilters />
       </aside>
 
       <!-- Search Results -->
-      <main class="col-span-1 sm:col-span-2 md:col-span-3">
+      <main class="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4">
         <div v-if="searchStore.loading" class="flex justify-center py-8">
           <LoadingSpinner />
         </div>
@@ -31,7 +33,7 @@
           <p class="text-text-500 mt-2">Try adjusting your search terms or filters</p>
         </div>
 
-        <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <ResultCard
             v-for="result in searchStore.results"
             :key="result.id"
@@ -42,7 +44,7 @@
           <div
             v-if="searchStore.hasMore"
             v-intersection-observer="handleIntersection"
-            class="col-span-1 sm:col-span-2 md:col-span-3 py-4 text-center"
+            class="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 py-4 text-center"
           >
             <AppButton
               v-if="!searchStore.loading"
@@ -60,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSearchStore } from '@/stores/search'
 import SearchFilters from '@/components/search/SearchFilters.vue'
@@ -79,6 +81,13 @@ onMounted(() => {
     searchStore.search(query)
   }
 })
+
+watch(
+  () => searchStore.query,
+  (query) => {
+    document.title = `${query} - Amber Search`
+  },
+)
 
 function handleIntersection(entries: IntersectionObserverEntry[]) {
   const [entry] = entries

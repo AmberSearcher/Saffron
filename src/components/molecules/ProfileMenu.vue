@@ -14,7 +14,7 @@
 
     <div
       v-if="showMenu"
-      class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-background-50 ring-1 ring-black ring-opacity-5"
+      class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-background-200 ring-1 ring-black ring-opacity-5"
     >
       <div class="py-1">
         <a href="#" class="block px-4 py-2 text-text-700 hover:bg-background-100">

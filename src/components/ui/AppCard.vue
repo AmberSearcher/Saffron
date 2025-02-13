@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-background-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-200"
+    class="bg-background-100 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-200"
     :class="{ 'cursor-pointer': clickable }"
     @click="clickable && $emit('click')"
   >

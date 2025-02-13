@@ -1,13 +1,15 @@
 <template>
   <header class="bg-background-100 shadow-md">
-    <div class="container mx-auto px-4 py-4">
+    <div class="mx-auto px-20 py-4">
       <div class="flex items-center justify-between gap-4">
         <router-link to="/" class="flex items-center gap-2">
           <img src="@/assets/icons/logo.png" alt="AmberSearch" class="w-8 h-8" />
           <span class="text-xl font-bold text-primary-600">AmberSearch</span>
         </router-link>
 
-        <SearchBar v-if="route.name !== 'home'" class="flex-grow max-w-3xl" />
+        <div class="hidden md:block md:flex-grow max-w-3xl">
+          <SearchBar v-if="route.name !== 'home'" />
+        </div>
 
         <div class="flex items-center gap-4">
           <ThemeToggle />

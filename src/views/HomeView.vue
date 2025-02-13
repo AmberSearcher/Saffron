@@ -32,4 +32,6 @@ const categories = [
   { name: 'Articles', icon: NewspaperIcon },
   { name: 'Web', icon: GlobeAltIcon },
 ]
+
+document.title = `Amber Search`
 </script>
