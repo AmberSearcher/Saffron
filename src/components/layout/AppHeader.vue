@@ -1,6 +1,6 @@
 <template>
   <header class="bg-background-100 shadow-md">
-    <div class="mx-auto px-20 py-4">
+    <div class="container mx-auto px-4 py-4 md:px-12 md:max-w-[98vw]">
       <div class="flex items-center justify-between gap-4">
         <router-link to="/" class="flex items-center gap-2">
           <img src="@/assets/icons/logo.png" alt="AmberSearch" class="w-8 h-8" />
