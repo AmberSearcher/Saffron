@@ -16,6 +16,11 @@ const routes: RouteRecordRaw[] = [
         path: '/search',
         name: 'search',
         component: () => import('@/views/SearchResults.vue'),
+        beforeEnter(to) {
+          if (to.query.q) {
+            document.title = `${to.query.q} - Amber Search`
+          }
+        },
       },
     ],
   },
